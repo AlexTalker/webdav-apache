@@ -1,0 +1,15 @@
+services:
+  webdav:
+    image: "webdav-apache"
+    build:
+      context: "src"
+      dockerfile: "webdav-apache.dockerfile"
+    environment:
+      WEBDAV_HOST: "localhost"
+      WEBDAV_PORT: 8443
+      WEBDAV_SSL: "On"
+    ports:
+      - "8443:443"
+    volumes:
+      - "./ssl:/usr/local/apache2/ssl/"
+      - "./auth:/usr/local/apache2/auth/"
